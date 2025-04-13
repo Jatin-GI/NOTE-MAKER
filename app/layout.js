@@ -1,13 +1,9 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+import { Outfit } from "next/font/google";
+import { ConvexClientProvider } from "./ConvexClientProvider";
+import { ClerkProvider } from "@clerk/nextjs";
+import { Toaster } from "@/components/ui/sonner";
+const outfit = Outfit({
   subsets: ["latin"],
 });
 
@@ -18,12 +14,18 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en" suppressHydrationWarning>
+        <body
+          className={outfit.className}
+          data-liner-extension-version="7.16.6"
+          data-new-gr-c-s-check-loaded="14.1229.0"
+          data-gr-ext-installed=""
+        >
+          <ConvexClientProvider>{children}</ConvexClientProvider>
+          <Toaster />
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
