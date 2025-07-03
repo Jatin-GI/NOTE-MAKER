@@ -19,7 +19,7 @@ export const ingest = action({
       //  //string
       args.splitText.map(() => ({ fileId: args.fileId })),
       new GoogleGenerativeAIEmbeddings({
-        apiKey: "AIzaSyAzWB2J72DQPF3g_gY5Sxa41gDQgvj21z8",
+        apiKey: "",
         model: "text-embedding-004", // 768 dimensions
         taskType: TaskType.RETRIEVAL_DOCUMENT,
         title: "Document title",
